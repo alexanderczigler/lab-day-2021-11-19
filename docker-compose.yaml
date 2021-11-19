@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  client:
+    build: client
+    ports:
+      - 7357:7357
+    environment:
+      DATABASE_URL: postgres://postgres:postgrespassword@postgres/X
+      POSTGRES__DATABASE: X
+      POSTGRES__HOST: postgres
+      SYSTEM__PORT: 7357
+
+  postgres:
+    image: postgres:11.2-alpine
+    environment:
+      POSTGRES_DB: X
+    ports:
+      - 5432:5432
